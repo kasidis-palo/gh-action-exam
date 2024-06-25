@@ -6,8 +6,10 @@ jobs:
   print:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 2
       matrix:
         text: [a, b, c, d]
         description: [1, 2, 3, 4]
     steps:
       - run: echo "this time, it's ${{ matrix.text }} ${{ matrix.description }}"
+        name: Running ${{ matrix.text }}-${{ matrix.description }}
