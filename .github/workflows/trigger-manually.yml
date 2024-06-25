@@ -15,4 +15,5 @@ jobs:
       - name: Print it
         run: |
           echo Hello, ${{ github.event.inputs.text }}
+          echo Hello again, ${{ inputs.text }}
         
