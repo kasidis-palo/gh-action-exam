@@ -9,7 +9,7 @@ on:
 
 jobs:
   print:
-    environment: inputs.environment
+    environment: ${{github.event.inputs.environment}}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.ENV }}
