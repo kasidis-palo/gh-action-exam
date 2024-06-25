@@ -8,3 +8,5 @@ jobs:
     steps:
       - run: echo $GITHUB_REPOSITORY
         name: (ENV) GitHub Repository
+      - run: echo $GITHUB_ACTOR
+        name: (ENV) GitHub Actor
