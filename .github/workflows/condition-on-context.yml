@@ -9,25 +9,26 @@ on:
 
 jobs:
   print:
-    environment: inputs.environment
+    environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.ENV }}
   run-the-dev-job:
-    environment: inputs.environment
+    environment: ${{ inputs.environment }}
     if: vars.ENV == 'dev'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/composite
   run-the-prod-job:
-    environment: inputs.environment
+    environment: ${{ inputs.environment }}
     if: vars.ENV == 'prod'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/composite
   run-the-empty-job:
+    environment: ${{ inputs.environment }}
     if: vars.ENV == ''
     runs-on: ubuntu-latest
     steps:
