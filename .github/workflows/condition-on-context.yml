@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.ENV }}
+      - run: echo ${{ vars }}
+      - run: env
   run-the-dev-job:
     environment: ${{ inputs.environment }}
     if: vars.ENV == 'dev'
