@@ -5,10 +5,11 @@ on: [workflow_dispatch]
 defaults:
   run:
     shell: bash
-    working-directory: ./scripts
+    working-directory: './scripts'
 
 jobs:
-  see-env:
+  run-script:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: ./run.sh
