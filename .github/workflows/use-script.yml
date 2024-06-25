@@ -1,0 +1,14 @@
+name: Use default working-directory
+
+on: [workflow_dispatch]
+
+defaults:
+  run:
+    shell: bash
+    working-directory: './scripts'
+
+jobs:
+  see-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: run.sh
