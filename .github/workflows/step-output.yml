@@ -1,0 +1,36 @@
+name: Condition on context vars
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: select environment
+        type: environment
+
+jobs:
+  print:
+    environment: ${{github.event.inputs.environment}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ vars.ENV }}
+      - run: echo ${{ vars.DEMMY }}
+      - run: echo ${{ secrets.AZURE_WEB_KEY }}
+      - run: env
+  run-the-dev-job:
+    if: vars.ENV == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
+  run-the-prod-job:
+    if: vars.ENV == 'prod'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
+  run-the-empty-job:
+    if: vars.ENV == ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
