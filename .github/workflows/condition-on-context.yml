@@ -9,6 +9,7 @@ on:
 
 jobs:
   print:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.ENV }}
