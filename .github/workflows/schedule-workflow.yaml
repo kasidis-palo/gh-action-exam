@@ -1,0 +1,14 @@
+name: Schedule Workflow
+
+on:
+  schedule:
+    - cron: '30 5 * * 1,3'
+    - cron: '30 3 * * 2,4'
+
+jobs:
+  print-text:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo it
+        run: |
+          echo "Hello!"
