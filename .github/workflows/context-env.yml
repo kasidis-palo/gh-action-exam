@@ -1,0 +1,10 @@
+name: Access context, and env
+
+on: [workflow_dispatch]
+
+jobs:
+  see-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $GITHUB_REPOSITORY
+        name: (ENV) GitHub Repository
