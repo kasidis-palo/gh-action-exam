@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ vars.ENV }}
+      - run: echo ${{ vars.DEMMY }}
       - run: echo ${{ secrets.AZURE_WEB_KEY }}
       - run: env
   run-the-dev-job:
