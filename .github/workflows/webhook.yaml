@@ -1,0 +1,11 @@
+name: Webhook event
+
+on:
+  repository_dispatch:
+    types: [custom_type]
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hi there, $GITHUB_REF"
