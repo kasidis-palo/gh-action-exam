@@ -1,0 +1,6 @@
+name: "Echo Just that"
+description: "Just to test it out"
+
+runs:
+  using: "node16"
+  main: "index.js"

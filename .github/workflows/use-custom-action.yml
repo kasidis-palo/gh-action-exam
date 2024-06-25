@@ -1,0 +1,9 @@
+name: Custom Action
+
+on: [workflow_dispatch]
+
+jobs:
+  see-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: .github/actions/echo
