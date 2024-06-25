@@ -1,7 +1,11 @@
-name: Condition on context
+name: Condition on context vars
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: select environment
+        type: environment
 
 jobs:
   print:
