@@ -1,0 +1,9 @@
+name: Test composite action
+description: Testing how composite works
+
+runs:
+  using: composite
+  steps:
+    - uses: './github/actions/echo'
+    - run: echo "This is composite action, for combining things together"
+      shell: bash
