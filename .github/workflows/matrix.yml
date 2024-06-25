@@ -1,0 +1,13 @@
+name: Matrix
+
+on: [workflow_dispatch]
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        text: [a, b, c, d]
+        description: [1, 2, 3, 4]
+    steps:
+      - run: echo "this time, it's ${{ matrix.text }} ${{ matrix.description }}"
