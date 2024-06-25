@@ -6,11 +6,14 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
+    outputs:
+      pet: ${{ steps.result.outputs.PET }}
     steps:
       - run: echo "PET=DOG" >> $GITHUB_OUTPUT
+        id: result
   use-output:
     runs-on: ubuntu-latest
     needs: [print]
     steps:
-      - run: echo "accessing output ${{ steps.print.outputs.PET }}"
+      - run: echo "accessing output ${{ needs.print.outputs.pet }}"
   
