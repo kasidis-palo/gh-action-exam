@@ -1,0 +1,28 @@
+name: Condition on context
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ vars.ENV }}
+  run-the-dev-job:
+    if: vars.ENV == 'dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
+  run-the-prod-job:
+    if: vars.ENV == 'prod'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
+  run-the-empty-job:
+    if: vars.ENV == ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
