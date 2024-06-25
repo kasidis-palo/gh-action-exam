@@ -10,3 +10,7 @@ jobs:
         name: (ENV) GitHub Repository
       - run: echo $GITHUB_ACTOR
         name: (ENV) GitHub Actor
+      - run: echo $GITHUB_REF
+        name: (ENV) GitHub REF
+      - run: echo $GITHUB_REF_NAME
+        name: (ENV) GitHub REF NAME
