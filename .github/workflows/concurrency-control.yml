@@ -1,0 +1,26 @@
+name: Concurrency Control
+
+on: [workflow_dispatch]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  this-will-error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This will Error
+        run: exit 1
+  this-will-pass:
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
+  this-will-pass-as-well:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite
