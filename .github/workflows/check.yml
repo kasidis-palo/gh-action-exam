@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/composite
   this-will-pass-as-well:
     runs-on: ubuntu-latest
     if: ${{ always() }}
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/composite
