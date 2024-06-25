@@ -1,0 +1,25 @@
+
+name: Needs / Dependency
+
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: test
+        required: false
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: contains(github.event.inputs.text, 'go')
+    steps:
+      - name: Echo Build
+        run: echo "Building"
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.inputs.text, 'go') }}
+    needs: [build]
+    steps:
+      - name: Echo Build
+        run: echo "Deploying"
